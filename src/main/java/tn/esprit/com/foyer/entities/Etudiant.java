@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table( name = "Etudiant")
@@ -18,4 +19,6 @@ public class Etudiant implements Serializable {
     private String ecole;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
 }
