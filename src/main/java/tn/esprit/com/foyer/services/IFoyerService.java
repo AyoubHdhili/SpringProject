@@ -10,4 +10,5 @@ public interface IFoyerService {
     Foyer updateFoyer (Foyer f);
     Foyer retrieveFoyer (long idFoyer);
     void archiverFoyer (long idFoyer);
+    void deleteFoyer(long idFoyer);
 }

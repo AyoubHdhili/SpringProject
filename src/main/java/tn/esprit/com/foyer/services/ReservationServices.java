@@ -15,26 +15,26 @@ public class ReservationServices implements IReservationService {
 
     @Override
     public List<Reservation> retrieveAllReservation() {
-        return null;
+        return reservationRepository.findAll();
     }
 
     @Override
     public Reservation addReservation(Reservation r) {
-        return null;
+        return reservationRepository.save(r);
     }
 
     @Override
     public Reservation updateReservation(Reservation r) {
-        return null;
+        return reservationRepository.save(r);
     }
 
     @Override
     public Reservation retrieveReservation(Long idReservation) {
-        return null;
+        return reservationRepository.findById(idReservation).get();
     }
 
     @Override
     public void removeReservation(Long idReservation) {
-
+        reservationRepository.deleteById(idReservation);
     }
 }

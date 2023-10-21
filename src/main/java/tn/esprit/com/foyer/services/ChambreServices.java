@@ -15,26 +15,26 @@ public class ChambreServices implements IChambreService{
 
     @Override
     public List<Chambre> retrieveAllChambre() {
-        return null;
+        return chambreRepository.findAll();
     }
 
     @Override
     public Chambre addChambre(Chambre c) {
-        return null;
+        return chambreRepository.save(c);
     }
 
     @Override
     public Chambre updateChambre(Chambre c) {
-        return null;
+        return chambreRepository.save(c);
     }
 
     @Override
     public Chambre retrieveChambre(Long idChambre) {
-        return null;
+        return chambreRepository.findById(idChambre).get();
     }
 
     @Override
     public void removeChambre(Long idChambre) {
-
+        chambreRepository.deleteById(idChambre);
     }
 }

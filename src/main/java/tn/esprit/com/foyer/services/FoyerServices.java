@@ -15,26 +15,33 @@ public class FoyerServices implements IFoyerService{
 
     @Override
     public List<Foyer> retrieveAllFoyers() {
-        return null;
+        return foyerRepository.findAll();
     }
 
     @Override
     public Foyer addFoyer(Foyer f) {
-        return null;
+        return foyerRepository.save(f);
     }
 
     @Override
     public Foyer updateFoyer(Foyer f) {
-        return null;
+        return foyerRepository.save(f);
     }
 
     @Override
     public Foyer retrieveFoyer(long idFoyer) {
-        return null;
+        return foyerRepository.findById(idFoyer).get();
     }
 
     @Override
     public void archiverFoyer(long idFoyer) {
+        Foyer f = foyerRepository.findById(idFoyer).get();
+        f.setArchived(true);
+        foyerRepository.save(f);
+    }
 
+    @Override
+    public void deleteFoyer(long idFoyer) {
+        foyerRepository.deleteById(idFoyer);
     }
 }

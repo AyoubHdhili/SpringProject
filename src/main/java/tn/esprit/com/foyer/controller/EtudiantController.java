@@ -5,10 +5,17 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.com.foyer.entities.Etudiant;
 import tn.esprit.com.foyer.services.EtudiantServices;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
+@RequestMapping("/etudiant")
 public class EtudiantController {
     EtudiantServices etudiantService;
+    @GetMapping("/retrieve-all-etudiants")
+    public List<Etudiant> getAllEtudiants(){
+        return etudiantService.retrieveAllEtudiants();
+    }
 
     @GetMapping("/retrieve-etudiant/{etudiant-id}")
     public Etudiant retrieveEtudiant(@PathVariable("etudiant-id") Long etudiantId) {
@@ -16,8 +23,7 @@ public class EtudiantController {
     }
     @PostMapping("/add-etudiant")
     public Etudiant addEtudiant(@RequestBody Etudiant e) {
-        Etudiant etudiant = etudiantService.addEtudiant(e);
-        return etudiant;
+        return etudiantService.addEtudiant(e);
     }
     @DeleteMapping("/remove-etudiant/{etudiant-id}")
     public void removeEtudiant(@PathVariable("etudiant-id") Long etudiantId) {

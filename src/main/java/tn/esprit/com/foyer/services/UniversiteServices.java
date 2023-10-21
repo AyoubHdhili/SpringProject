@@ -15,26 +15,26 @@ public class UniversiteServices implements IUniversiteService{
 
     @Override
     public List<Universite> retrieveAllUniversities() {
-        return null;
+        return universteRepository.findAll();
     }
 
     @Override
     public Universite addUniversity(Universite u) {
-        return null;
+        return universteRepository.save(u);
     }
 
     @Override
     public Universite updateUniversity(Universite u) {
-        return null;
+        return universteRepository.save(u);
     }
 
     @Override
     public Universite retrieveUniversity(long idUniversite) {
-        return null;
+        return universteRepository.findById(idUniversite).get();
     }
 
     @Override
-    public void removeUniversity(long idUniversity) {
-
+    public void removeUniversity(long idUniversite) {
+        universteRepository.deleteById(idUniversite);
     }
 }

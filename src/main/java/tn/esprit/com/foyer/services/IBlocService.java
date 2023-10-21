@@ -14,5 +14,5 @@ public interface IBlocService {
 
     Bloc retrieveBloc(Long idBloc);
 
-    void removeEtudiant(Long idEtudiant);
+    void removeBloc(Long idBloc);
 }

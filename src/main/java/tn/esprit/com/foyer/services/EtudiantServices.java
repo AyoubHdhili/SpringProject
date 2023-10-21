@@ -36,6 +36,11 @@ public class EtudiantServices implements IEtudiantService{
 
     @Override
     public void removeEtudiant(Long idEtudiant) {
+        etudiantRepository.deleteById(idEtudiant);
+    }
 
+    @Override
+    public List<Etudiant> addEtudiants(List<Etudiant> etudiants) {
+        return etudiantRepository.saveAll(etudiants);
     }
 }

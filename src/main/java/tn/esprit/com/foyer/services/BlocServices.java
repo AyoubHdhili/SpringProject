@@ -14,26 +14,26 @@ public class BlocServices implements IBlocService{
     BlocRepository blocRepository;
     @Override
     public List<Bloc> retrieveAllBlocs() {
-        return null;
+        return blocRepository.findAll();
     }
 
     @Override
     public Bloc addBloc(Bloc b) {
-        return null;
+        return blocRepository.save(b);
     }
 
     @Override
     public Bloc updateBloc(Bloc b) {
-        return null;
+        return blocRepository.save(b);
     }
 
     @Override
     public Bloc retrieveBloc(Long idBloc) {
-        return null;
+        return blocRepository.findById(idBloc).get();
     }
 
     @Override
-    public void removeEtudiant(Long idEtudiant) {
-
+    public void removeBloc(Long idBloc) {
+        blocRepository.deleteById(idBloc);
     }
 }
