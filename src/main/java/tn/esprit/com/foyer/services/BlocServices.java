@@ -1,12 +1,15 @@
 package tn.esprit.com.foyer.services;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.com.foyer.entities.Bloc;
+import tn.esprit.com.foyer.entities.Chambre;
 import tn.esprit.com.foyer.repositories.BlocRepository;
+import tn.esprit.com.foyer.repositories.ChambreRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor

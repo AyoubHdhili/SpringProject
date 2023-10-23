@@ -29,4 +29,9 @@ public class ChambreController {
     public void deleteChambre(@PathVariable("chambre-id") Long chambreId){
         chambreServices.removeChambre(chambreId);
     }
+
+    @PutMapping("/affecter-chambre-bloc/{nom-bloc}")
+    public void affecterChambreABloc(@PathVariable("nom-bloc") String nomBloc, @RequestBody List<Long> numChambre){
+        chambreServices.affecterChambresABloc(numChambre, nomBloc);
+    }
 }
