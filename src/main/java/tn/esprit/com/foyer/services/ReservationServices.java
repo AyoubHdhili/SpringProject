@@ -3,7 +3,9 @@ package tn.esprit.com.foyer.services;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.com.foyer.entities.Etudiant;
 import tn.esprit.com.foyer.entities.Reservation;
+import tn.esprit.com.foyer.repositories.EtudiantRepository;
 import tn.esprit.com.foyer.repositories.ReservationRepository;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ReservationServices implements IReservationService {
     ReservationRepository reservationRepository;
+    EtudiantRepository etudiantRepository;
 
     @Override
     public List<Reservation> retrieveAllReservation() {
@@ -29,12 +32,12 @@ public class ReservationServices implements IReservationService {
     }
 
     @Override
-    public Reservation retrieveReservation(Long idReservation) {
+    public Reservation retrieveReservation(String idReservation) {
         return reservationRepository.findById(idReservation).get();
     }
 
     @Override
-    public void removeReservation(Long idReservation) {
+    public void removeReservation(String idReservation) {
         reservationRepository.deleteById(idReservation);
     }
 }

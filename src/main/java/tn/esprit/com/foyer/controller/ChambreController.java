@@ -3,6 +3,7 @@ package tn.esprit.com.foyer.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.com.foyer.entities.Chambre;
+import tn.esprit.com.foyer.entities.TypeChambre;
 import tn.esprit.com.foyer.services.ChambreServices;
 
 import java.util.List;
@@ -33,5 +34,15 @@ public class ChambreController {
     @PutMapping("/affecter-chambre-bloc/{nom-bloc}")
     public void affecterChambreABloc(@PathVariable("nom-bloc") String nomBloc, @RequestBody List<Long> numChambre){
         chambreServices.affecterChambresABloc(numChambre, nomBloc);
+    }
+    @GetMapping("/getChambrebyNomBloc/{nomBloc}")
+    public List<Chambre> getChambresByNomBloc(@PathVariable("nomBloc") String nomBloc){
+        return chambreServices.getChambresParNomBloc(nomBloc);
+
+    }
+    @GetMapping("/getNombreChambreparTypeEtBloc/{typec}/{idbloc}")
+    public Long  getnbChambre(@PathVariable("typec") TypeChambre typec, @PathVariable("idbloc") Long idbloc){
+        return chambreServices.nbChambreParTypeEtBloc(typec,idbloc);
+
     }
 }

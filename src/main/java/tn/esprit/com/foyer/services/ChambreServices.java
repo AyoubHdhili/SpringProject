@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.com.foyer.entities.Bloc;
 import tn.esprit.com.foyer.entities.Chambre;
+import tn.esprit.com.foyer.entities.TypeChambre;
 import tn.esprit.com.foyer.repositories.BlocRepository;
 import tn.esprit.com.foyer.repositories.ChambreRepository;
 
@@ -51,4 +52,20 @@ public class ChambreServices implements IChambreService{
         }
         return b;
     }
+    public List<Chambre> getChambresParNomBloc ( String nomBloc )
+    {
+        Bloc b = blocRepository.findByNomBloc(nomBloc);
+        List<Chambre> chambres = b.getChambres().stream().toList();
+        return chambres;
+    }
+    public long nbChambreParTypeEtBloc(TypeChambre type, long idBloc )
+    {
+        Bloc b = blocRepository.findById(idBloc).get();
+        List<Chambre> chambres;
+        chambres = chambreRepository.findByTypeAndBlocJPQL(type,b);
+        return chambres.size();
+
+
+    }
+
 }

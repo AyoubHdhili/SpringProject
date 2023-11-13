@@ -12,7 +12,7 @@ public interface IReservationService {
 
     Reservation updateReservation(Reservation r);
 
-    Reservation retrieveReservation(Long idReservation);
+    Reservation retrieveReservation(String idReservation);
 
-    void removeReservation(Long idReservation);
+    void removeReservation(String idReservation);
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.com.foyer.entities.Foyer;
+import tn.esprit.com.foyer.repositories.BlocRepository;
 import tn.esprit.com.foyer.repositories.FoyerRepository;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FoyerServices implements IFoyerService{
     FoyerRepository foyerRepository;
+    BlocRepository blocRepository;
 
     @Override
     public List<Foyer> retrieveAllFoyers() {
@@ -43,5 +45,14 @@ public class FoyerServices implements IFoyerService{
     @Override
     public void deleteFoyer(long idFoyer) {
         foyerRepository.deleteById(idFoyer);
+    }
+
+    public Foyer addFoyerWithBloc(Foyer f) {
+        Foyer foyer = foyerRepository.save(f);
+        f.getBloc().forEach(bloc -> {
+            bloc.setFoyer(f);
+            blocRepository.save(bloc);
+        });
+        return foyer;
     }
 }

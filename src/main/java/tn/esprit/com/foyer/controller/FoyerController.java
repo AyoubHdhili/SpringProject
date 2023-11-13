@@ -36,4 +36,8 @@ public class FoyerController {
     public void archiverFoyer(@PathVariable("foyer-id") Long foyerId){
         foyerServices.archiverFoyer(foyerId);
     }
+    @PostMapping("/add-foyer-with-bloc")
+    public Foyer addFoyerWithBloc(@RequestBody Foyer f){
+        return foyerServices.addFoyerWithBloc(f);
+    }
 }

@@ -2,6 +2,7 @@ package tn.esprit.com.foyer.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.com.foyer.entities.Etudiant;
 import tn.esprit.com.foyer.entities.Reservation;
 import tn.esprit.com.foyer.services.ReservationServices;
 
@@ -19,7 +20,7 @@ public class ReservationController {
     }
 
     @GetMapping("/retrieve-reservation/{reservation-id}")
-    public Reservation retrieveReservation(@PathVariable("reservation-id") Long reservationId){
+    public Reservation retrieveReservation(@PathVariable("reservation-id") String reservationId){
         return reservationServices.retrieveReservation(reservationId);
     }
 
@@ -29,7 +30,7 @@ public class ReservationController {
     }
 
     @DeleteMapping("/delete-reservation/{reservation-id}")
-    public void deleteReservation(@PathVariable("reservation-id") Long reservationId){
+    public void deleteReservation(@PathVariable("reservation-id") String reservationId){
         reservationServices.removeReservation(reservationId);
     }
 }
