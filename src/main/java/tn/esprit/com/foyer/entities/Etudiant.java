@@ -1,8 +1,10 @@
 package tn.esprit.com.foyer.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,21 +13,23 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @Table( name = "Etudiant")
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idEtudiant")
-    Long idEtudiant; // Clé primaire
-    String nomEt;
-    String prenomEt;
-    Long cin;
-    String ecole;
+    private Long idEtudiant; // Clé primaire
+    private String nomEt;
+    private String prenomEt;
+    private Long cin;
+    private String ecole;
     @Temporal(TemporalType.DATE)
-    Date dateNaissance;
+    private Date dateNaissance;
     @ManyToMany(cascade = CascadeType.ALL)
-    Set<Reservation> reservations;
+    private Set<Reservation> reservations;
+
+
 }
