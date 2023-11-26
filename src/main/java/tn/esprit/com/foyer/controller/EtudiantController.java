@@ -32,6 +32,6 @@ public class EtudiantController {
 
     @PutMapping("/affecter-etudiant-reservation/{name}/{prenom}/{id}")
     public Etudiant affecterEtudiantAReservation(@PathVariable(name="name") String nameEt, @PathVariable(name = "prenom") String prenomEt, @PathVariable(name = "id") String idReservation){
-        return etudiantService.affecterEtudiantAReservation(nameEt, prenomEt, idReservation);
+         return etudiantService.affecterEtudiantAReservation(nameEt, prenomEt, idReservation);
     }
 }

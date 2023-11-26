@@ -2,6 +2,7 @@ package tn.esprit.com.foyer.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.com.foyer.entities.Bloc;
 import tn.esprit.com.foyer.entities.Chambre;
 import tn.esprit.com.foyer.entities.TypeChambre;
 import tn.esprit.com.foyer.services.ChambreServices;
@@ -31,9 +32,9 @@ public class ChambreController {
         chambreServices.removeChambre(chambreId);
     }
 
-    @PutMapping("/affecter-chambre-bloc/{nom-bloc}")
-    public void affecterChambreABloc(@PathVariable("nom-bloc") String nomBloc, @RequestBody List<Long> numChambre){
-        chambreServices.affecterChambresABloc(numChambre, nomBloc);
+    @PutMapping("/affecterChambresABloc/{nom-bloc}")
+    public Bloc affecterChambresABloc (@RequestBody List<Long> numChambre, @PathVariable("nom-bloc") String nomBloc){
+        return chambreServices.affecterChambresABloc(numChambre,nomBloc);
     }
     @GetMapping("/getChambrebyNomBloc/{nomBloc}")
     public List<Chambre> getChambresByNomBloc(@PathVariable("nomBloc") String nomBloc){

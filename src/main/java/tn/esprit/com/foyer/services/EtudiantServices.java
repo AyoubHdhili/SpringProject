@@ -49,19 +49,19 @@ public class EtudiantServices implements IEtudiantService{
         return etudiantRepository.saveAll(etudiants);
     }
 
-    public Etudiant affecterEtudiantAReservation(String nomEt , String prenomEt , String idReservation ){
-        Etudiant e = etudiantRepository.findByNomEtAndPrenomEt(nomEt,prenomEt);
+    public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation){
+        Etudiant e = etudiantRepository.findByNomEtAndPrenomEt(nomEt, prenomEt);
         Reservation r = reservationRepository.findById(idReservation).get();
         Set<Reservation> reservations = new HashSet<>();
         if(e.getReservations() == null){
             reservations.add(r);
         }
-        else {
+        else{
             reservations = e.getReservations();
             reservations.add(r);
         }
         e.setReservations(reservations);
         etudiantRepository.save(e);
         return e;
-    };
+    } ;
 }

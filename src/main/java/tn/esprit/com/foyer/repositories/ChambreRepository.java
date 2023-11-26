@@ -14,5 +14,6 @@ import java.util.List;
 public interface ChambreRepository extends JpaRepository<Chambre,Long> {
     @Query("SELECT c FROM Chambre c WHERE c.typeC = :type AND c.bloc = :b")
     List<Chambre> findByTypeAndBlocJPQL(@Param("type") TypeChambre type, @Param("b") Bloc b);
+    Chambre findByNumeroChambre(Long numChambre);
     List<Chambre> findByBlocFoyerIdFoyer(Long idFoyer);
 }

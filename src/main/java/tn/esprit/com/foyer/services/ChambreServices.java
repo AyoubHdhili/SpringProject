@@ -49,13 +49,14 @@ public class ChambreServices implements IChambreService{
     }
     public Bloc affecterChambresABloc (List<Long> numChambre, String nomBloc){
         Bloc b = blocRepository.findByNomBloc(nomBloc);
-        for (int i = 0; i < numChambre.size(); i++){
-            Chambre ch = chambreRepository.findById(numChambre.get(i)).get();
-            ch.setBloc(b);
-            chambreRepository.save(ch);
+        for (Long i: numChambre
+        ) {
+            Chambre c = chambreRepository.findByNumeroChambre(i);
+            c.setBloc(b);
+            chambreRepository.save(c);
         }
         return b;
-    }
+    };
     public List<Chambre> getChambresParNomBloc ( String nomBloc )
     {
         Bloc b = blocRepository.findByNomBloc(nomBloc);
